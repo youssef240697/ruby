@@ -12,19 +12,34 @@ class Filehandler
       #puts ""
       Dir.mkdir(input)
       return "Directory erstellt:" + @@base  + "/" + input
-    
     rescue
       return "Fehler beim erstellen des Directorys aufgetreten"
-end
-
-    
+    end
   end
   
   def mkfile(input)
-    
+    begin
+      if(!File.exists?(input))
+        File.new("#{@@base}"+"/"+"#{input}", "w+")
+      end
+      return "File erstellt:" + @@base + "/" + input
+    rescue
+      return "Fehler beim erstellen des Files aufgetreten"
+    end
   end
   
-  def openf(input)
+  def open(input)
+    begin
+    puts "#{input}"
+      if(!File.exists?(input[2]))
+        File.open("#{input[2]}", "r+")
+        File.puts("#{input[3]}")
+      end
+      return "File erstellt"
+    rescue
+      return "Fehler beim erstellen des Files aufgetreten"
+    end
+    
     
   end
   
